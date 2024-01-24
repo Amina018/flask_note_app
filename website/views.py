@@ -4,7 +4,7 @@ from .models import Note, User
 from . import db
 import json
 
-views = Blueprint('views',__name__)
+views = Blueprint('views',__name__, template_folder='templates')
 
 
 @views.route('/', methods=['GET', 'POST'])
@@ -36,6 +36,8 @@ def delete_note():
 
     return jsonify({})
 
- 
+@views.route('/about-developer', methods=['GET'])
+def about_developer():
+    return render_template('about_developer.html', user=current_user)
 
     
